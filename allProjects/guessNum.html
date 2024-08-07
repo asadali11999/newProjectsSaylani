@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+</head>
+<body>
+    <h1>Guess the Number Game</h1>
+    <script>
+        function playGuessTheNumber() {
+            let roundsWon = 0;
+            const totalRounds = 10;
+            const winningRounds = 3;
+            const minNumber = 1;
+            const maxNumber = 10;
+
+            for (let round = 1; round <= totalRounds; round++) {
+                const secretNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+                let guess = parseInt(prompt(`Round ${round}: Guess a number between ${minNumber} and ${maxNumber}`));
+
+                // Check if guess is a number and within range
+                if (isNaN(guess) || guess < minNumber || guess > maxNumber) {
+                    alert("Invalid input. Please enter a number within the specified range.");
+                    round--; // Retry this round
+                    continue;
+                }
+
+                if (guess === secretNumber) {
+                    roundsWon++;
+                    alert("Congratulations! You guessed the number correctly.");
+                } else {
+                    alert(`Sorry, the correct number was ${secretNumber}.`);
+                }
+            }
+
+            // Determine game outcome
+            if (roundsWon >= winningRounds) {
+                alert(`You won ${roundsWon} out of ${totalRounds} rounds. You win the game!`);
+            } else {
+                alert(`You won ${roundsWon} out of ${totalRounds} rounds. You lose the game.`);
+            }
+        }
+
+        playGuessTheNumber();
+    </script>
+</body>
+</html>

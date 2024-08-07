@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    
+    <h1 style="text-align: center;" >Loops Projects </h1>
+    <div id="output"></div>
+
+    <script>
+        // Loop to print numbers from 1 to 10
+        let text = "";
+        for (let i = 1; i <= 10; i++) {
+            text += "The number is " + i + "<br>";
+        }
+        text += "<br>";
+
+        // Loop to print even numbers from 1 to 20
+        for (let i = 2; i <= 20; i += 2) {
+            text += "The even number is " + i + "<br>";
+        }
+        text += "<br>";
+
+        // Loop to print odd numbers from 1 to 15
+        for (let i = 1; i <= 15; i += 2) {
+            text += "The odd number is " + i + "<br>";
+        }
+        text += "<br>";
+
+        // Loop to calculate and print the factorial of a number (let's say 5)
+        let number = 5;
+        let factorial = 1;
+        for (let i = 1; i <= number; i++) {
+            factorial *= i;
+        }
+        text += "The factorial of " + number + " is " + factorial + "<br><br>";
+
+        // Loop to print the multiplication table of a number (let's say 7) up to 10
+        number = 7;
+        for (let i = 1; i <= 10; i++) {
+            text += number + " x " + i + " = " + (number * i) + "<br>";
+        }
+        text += "<br>";
+
+        // Loop to print the Fibonacci series up to the 10th term
+        let a = 0, b = 1;
+        for (let i = 0; i < 10; i++) {
+            text += a + "<br>";
+            let temp = a;
+            a = b;
+            b = temp + b;
+        }
+        text += "<br>";
+
+        // Loop to find and print the sum of digits of a number (let's say 123)
+        number = 123;
+        let sum_of_digits = 0;
+        while (number > 0) {
+            sum_of_digits += number % 10;
+            number = Math.floor(number / 10);
+        }
+        text += "The sum of digits is " + sum_of_digits + "<br><br>";
+
+        // Loop to print the reverse of a string (let's say "hello")
+        let string = "hello";
+        let reversed_string = "";
+        for (let i = string.length - 1; i >= 0; i--) {
+            reversed_string += string[i];
+        }
+        text += "The reverse of the string is " + reversed_string + "<br><br>";
+
+        // Loop to print the square of numbers from 1 to 10
+        for (let i = 1; i <= 10; i++) {
+            text += "The square of " + i + " is " + (i * i) + "<br>";
+        }
+        text += "<br>";
+
+        // Loop to find and print the largest element in an array (let's say [3, 7, 2, 9, 5])
+        let array = [3, 7, 2, 9, 5];
+        let largest = array[0];
+        for (let i = 1; i < array.length; i++) {
+            if (array[i] > largest) {
+                largest = array[i];
+            }
+        }
+        text += "The largest element is " + largest + "<br><br>";
+
+        // Output the results to the div element
+        document.getElementById("output").innerHTML = text;
+    </script>
+</body>
+</html>
