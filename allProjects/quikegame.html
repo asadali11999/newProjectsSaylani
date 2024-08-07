@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Stop Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #gameArea {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            border: 2px solid #333;
+            background-color: #fff;
+        }
+
+        #movingSquare {
+            width: 50px;
+            height: 50px;
+            background-color: #ff0000;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div id="movingSquare"></div>
+    </div>
+    <script>
+        const square = document.getElementById('movingSquare');
+        const gameArea = document.getElementById('gameArea');
+
+        let gameInterval;
+        let gameRunning = false;
+
+        function getRandomPosition() {
+            const gameAreaRect = gameArea.getBoundingClientRect();
+            const maxX = gameAreaRect.width - square.offsetWidth;
+            const maxY = gameAreaRect.height - square.offsetHeight;
+
+            return {
+                x: Math.random() * maxX,
+                y: Math.random() * maxY
+            };
+        }
+
+        function moveSquare() {
+            const { x, y } = getRandomPosition();
+            square.style.left = `${x}px`;
+            square.style.top = `${y}px`;
+        }
+
+        function startGame() {
+            if (gameRunning) return;
+            gameRunning = true;
+            gameInterval = setInterval(moveSquare, 1000);
+        }
+
+        function stopGame() {
+            clearInterval(gameInterval);
+            gameRunning = false;
+            alert('You clicked the square!');
+        }
+
+        square.addEventListener('click', stopGame);
+
+        gameArea.addEventListener('click', (event) => {
+            if (event.target === gameArea) {
+                startGame();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            moveSquare();
+        });
+    </script>
+</body>
+</html>
